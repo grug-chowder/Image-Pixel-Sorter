@@ -1,0 +1,1 @@
+this is the result of my first atempt at image sorting, it is quick and dirty and alltogether anoying to use for any real amount of time, to use it you have to manualy enter the filename into the code along with any algorithm modifications you want, also the progess thing is kind of broken
