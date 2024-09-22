@@ -26,16 +26,16 @@ class pixelsort:
                 pass
 
         
-        time1 = time.time()
+        time1 = time.time()#functions/initalisation things
         pixel_map = the_image.load()
         width, height = the_image.size
 
-        frac_hgt = height
+        frac_hgt = height #getting some constants in place
         fractions = height//frac_hgt
         remainda = height%fractions
         lastpercent = 0
 
-        for i in range(width):#across
+        for i in range(width):#stepping across the x axis
             lizt = []
             offset = 0                                                 #should be toggleable
             frac_hgt = height                                          #round(height *  ((m.sin(i*2)/2.05) + 0.5))
@@ -54,7 +54,7 @@ class pixelsort:
 
                 offset = offset + frac_hgt
             
-            for j in range(remainda):
+            for j in range(remainda):#i dont think this code works but i dont think any of it is needed atm, i could be wrong tho, so ill keep it uncommented for now
                 lizt.append((pixel_map[i,j+offset][0], pixel_map[i,j+offset][1] ,pixel_map[i,j+offset][2], j))    
                 lizt.sort(key = self.evalu)
 
@@ -71,6 +71,9 @@ class pixelsort:
         the_image.show()
         print("'done killing'")
         the_image.save("sorted/"+str(time.time()).replace(".","")+".png")
+
+def getsomesettings():
+    pass
 
 lets = pixelsort()
 lets.bloodygo()
