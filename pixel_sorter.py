@@ -10,6 +10,7 @@ class pixelsort:
         self.bconstant = settings[2]
         self.heightconstant = settings[3]
         self.flip = settings[4]
+        self.lastpath = ""
     
 
     def evalu(self,val):     #this determins how the sort works
@@ -19,11 +20,15 @@ class pixelsort:
     def bloodygo(self):
         while True:
             path = input("input a filepath, and get it right")
+            if path == "":
+                path = self.lastpath
             try:
                 the_image = img.open(path)
                 break
             except:
                 pass
+        
+        self.lastpath = path
 
         
         time1 = time.time()#functions/initalisation things
@@ -73,7 +78,31 @@ class pixelsort:
         the_image.save("sorted/"+str(time.time()).replace(".","")+".png")
 
 def getsomesettings():
-    pass
+    smallist = ("rconstant","gconstant","bconstant","heightconstant","flip")
+    outlist = [1,1,1,10,-1]
+    print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip
+To change a setting simply write its name and the value you want to change it to or write kill to leave:""")
+    while True:
+        input = input()
+        input.strip()
+        input.lower()
 
-lets = pixelsort()
+        for i in (smallist):
+            if input.startswith(smallist(i)):
+                try:
+                    input = int(input.replace(smallist(i),""))
+                    outlist[i] = input
+                    print(" done!")
+                except:
+                    print("that was wrong somehow")
+        if input.startswith("kill"):
+            return outlist
+        
+        
+            
+
+
+    
+settings = getsomesettings()
+lets = pixelsort(settings)
 lets.bloodygo()
