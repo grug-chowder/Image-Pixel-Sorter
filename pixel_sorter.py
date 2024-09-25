@@ -88,20 +88,20 @@ def getsomesettings():
     print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip
 To change a setting simply write its name and the value you want to change it to or write kill to leave:""")
     while True:
-        input = input()
-        input.strip()
-        input.lower()
+        values = input("")
+        values.strip()
+        values.lower()
+        if values.startswith("kill"):
+            return outlist
 
-        for i in (smallist):
-            if input.startswith(smallist(i)):
+        for i in range(len(smallist)):
+            if values.startswith(smallist[i]):
                 try:
-                    input = int(input.replace(smallist(i),""))
-                    outlist[i] = input
+                    values = int(values.replace(smallist[i],""))
+                    outlist[i] = values
                     print(" done!")
                 except:
                     print("that was wrong somehow")
-        if input.startswith("kill"):
-            return outlist
         
         
             
@@ -111,7 +111,8 @@ lets = pixelsort()
 while True:
     value = input("""1.pixel sort
 2.change settings
-3.exit""")
+3.exit
+""")
     if value == "1":
         lets.bloodygo()
     elif value == "2":
