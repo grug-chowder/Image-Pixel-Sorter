@@ -4,7 +4,7 @@ import time
 
 
 class pixelsort:
-    def __init__(self,settings = [1,1,1,10,-1]):
+    def __init__(self,settings = [1,1,1,10,-1,1,0]):
         self.rconstant = settings[0]
         self.gconstant = settings[1]
         self.bconstant = settings[2]
@@ -12,12 +12,15 @@ class pixelsort:
         self.flip = settings[4]
         self.lastpath = ""
 
-    def changesettings(self,settings = [1,1,1,10,-1]):
-        self.rconstant = settings[0]
-        self.gconstant = settings[1]
-        self.bconstant = settings[2]
-        self.heightconstant = settings[3]
-        self.flip = settings[4]
+    def changesettings(self,settings = [1,1,1,10,-1,1,0]):
+        self.rconstant = settings[0]                   #constant for red
+        self.gconstant = settings[1]                   #constant for green
+        self.bconstant = settings[2]                   #constant for blue
+        self.heightconstant = settings[3]              #constant for the "pixel stickyness"
+        self.flip = settings[4]                        #used to flip the direction of the sort with either -1 or 1
+        self.heightdivconstant = settings[5]           #height subdevide, 1 for deactive greater for active dont use less than one or bigger than the image size will cause a crash
+        self.funsintoggle = settings[6]                #weird sin thing make equal to one to activate or 0 to deactivate other values will have unexpected results
+
     
     def evalu(self,val):     #this determins how the sort works
         return ((val[0]*self.rconstant+val[1]*self.gconstant+val[2]*self.bconstant)*self.flip + val[3]*self.heightconstant)
@@ -48,7 +51,7 @@ class pixelsort:
         for i in range(width):#stepping across the x axis
             lizt = []
             offset = 0                                                 #should be toggleable
-            frac_hgt = height                                          #round(height *  ((m.sin(i*2)/2.05) + 0.5))
+            frac_hgt = round((height/self.heightdivconstant)*(((m.sin(i*2)/2.05) + 0.5)**self.funsintoggle))                                          #round(height *  ((m.sin(i*2)/2.05) + 0.5))
             fractions = height//frac_hgt
             remainda = height%fractions
 
@@ -83,10 +86,10 @@ class pixelsort:
         the_image.save("sorted/"+str(time.time()).replace(".","")+".png")
 
 def getsomesettings():
-    smallist = ("rconstant","gconstant","bconstant","heightconstant","flip")
-    outlist = [1,1,1,10,-1]
+    smallist = ("rconstant","gconstant","bconstant","heightconstant","flip","heightdiv","sintoggle")
+    outlist = [1,1,1,10,-1,1,0]
     
-    print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip
+    print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip,heightdiv,sintoggle
 To change a setting simply write its name and then the value you want to change or write kill to go back:""")
     while True:
         values = input("")
