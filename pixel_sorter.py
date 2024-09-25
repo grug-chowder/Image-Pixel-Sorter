@@ -11,13 +11,18 @@ class pixelsort:
         self.heightconstant = settings[3]
         self.flip = settings[4]
         self.lastpath = ""
-    
 
+    def changesettings(self,settings = [1,1,1,10,-1]):
+        self.rconstant = settings[0]
+        self.gconstant = settings[1]
+        self.bconstant = settings[2]
+        self.heightconstant = settings[3]
+        self.flip = settings[4]
+    
     def evalu(self,val):     #this determins how the sort works
         return ((val[0]*self.rconstant+val[1]*self.gconstant+val[2]*self.bconstant)*self.flip + val[3]*self.heightconstant)
     
-    
-    def bloodygo(self):
+    def bloodygo(self):      #main function
         while True:
             path = input("input a filepath, and get it right")
             if path == "":
@@ -101,8 +106,17 @@ To change a setting simply write its name and the value you want to change it to
         
             
 
+lets = pixelsort()
 
-    
-settings = getsomesettings()
-lets = pixelsort(settings)
-lets.bloodygo()
+while True:
+    value = input("""1.pixel sort
+2.change settings
+3.exit""")
+    if value == "1":
+        lets.bloodygo()
+    elif value == "2":
+        settings = getsomesettings()
+        lets.changesettings(settings)
+    elif value =="3":
+        exit()
+
