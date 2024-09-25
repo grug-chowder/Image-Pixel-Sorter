@@ -85,6 +85,7 @@ class pixelsort:
 def getsomesettings():
     smallist = ("rconstant","gconstant","bconstant","heightconstant","flip")
     outlist = [1,1,1,10,-1]
+    
     print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip
 To change a setting simply write its name and the value you want to change it to or write kill to leave:""")
     while True:
@@ -94,7 +95,7 @@ To change a setting simply write its name and the value you want to change it to
         if values.startswith("kill"):
             return outlist
 
-        for i in range(len(smallist)):
+        for i in range(len(smallist)):#steps through every thing in the settings lists checking the input
             if values.startswith(smallist[i]):
                 try:
                     values = int(values.replace(smallist[i],""))
