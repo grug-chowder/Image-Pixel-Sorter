@@ -73,7 +73,7 @@ class pixelsort:
 
             if (round(i/width,2) > lastpercent):
                 lastpercent = round(i/width,2)
-                print(str(lastpercent*100))
+                print(str(round(lastpercent*100)))
         
         time2 = time.time()
         runtime = time2 - time1
@@ -87,12 +87,12 @@ def getsomesettings():
     outlist = [1,1,1,10,-1]
     
     print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip
-To change a setting simply write its name and the value you want to change it to or write kill to leave:""")
+To change a setting simply write its name and then the value you want to change or write kill to go back:""")
     while True:
         values = input("")
         values.strip()
         values.lower()
-        if values.startswith("kill"):
+        if values.startswith("kill") or values.startswith("exit") or values.startswith("die"):
             return outlist
 
         for i in range(len(smallist)):#steps through every thing in the settings lists checking the input
