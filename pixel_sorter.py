@@ -2,6 +2,9 @@ from PIL import Image as img
 import math as m
 import time
 
+#TODO TRANSPARANCY BUG
+#TODO OTHER SETTINGS
+#TODO VIDEO SUPPORT
 
 class pixelsort:
     def __init__(self,settings = [1,1,1,10,-1,1,0]):
