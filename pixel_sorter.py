@@ -10,6 +10,8 @@ class pixelsort:
         self.bconstant = settings[2]
         self.heightconstant = settings[3]
         self.flip = settings[4]
+        self.heightdivconstant = settings[5]           
+        self.funsintoggle = settings[6]   
         self.lastpath = ""
 
     def changesettings(self,settings = [1,1,1,10,-1,1,0]):
