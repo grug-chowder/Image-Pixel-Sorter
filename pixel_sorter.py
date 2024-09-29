@@ -97,7 +97,7 @@ def getsomesettings():
     print("""Settings: rconstant,gconstant,bconstant,heightconstant,flip,heightdiv,sintoggle
 To change a setting simply write its name and then the value you want to change or write kill to go back:""")
     while True:
-        values = input("")
+        values = str(input("input:"))
         values.strip()
         values.lower()
         if values.startswith("kill") or values.startswith("exit") or values.startswith("die"):
@@ -109,6 +109,7 @@ To change a setting simply write its name and then the value you want to change 
                     values = int(values.replace(smallist[i],""))
                     outlist[i] = values
                     print(" done!")
+                    break
                 except:
                     print("that was wrong somehow")
         
