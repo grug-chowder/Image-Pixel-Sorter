@@ -68,7 +68,7 @@ class pixelsort:
                 lizt.sort(key = self.evalu)
                     
                 for j in range(frac_hgt): 
-                    pixel_map[i,j+offset] = lizt[j]    
+                    pixel_map[i,j+offset] = (lizt[j][0],lizt[j][1],lizt[j][2])    
 
                 offset = offset + frac_hgt
             
