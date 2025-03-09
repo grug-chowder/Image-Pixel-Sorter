@@ -86,7 +86,10 @@ class pixelsort:
         time2 = time.time()
         runtime = time2 - time1
         print(runtime)
-        the_image.show()
+        try:
+            the_image.show()
+        except:
+            print("image dont want to display properly ah well")#managed to find an image that broke here but it was still processed and saved correctly so who cares
         print("'done killing'")
         the_image.save("sorted/"+str(time.time()).replace(".","")+".png")
 
